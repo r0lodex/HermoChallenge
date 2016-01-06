@@ -1,3 +1,4 @@
 config.codekit
 .sass-cache
 .codekit-cache
+static/components

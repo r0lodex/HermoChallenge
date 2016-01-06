@@ -1,0 +1,29 @@
+{
+  "name": "CodeKit Framework",
+  "authors": [
+    "Irfan Radzi <irfan@spreeo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-animate": "~1.4.8",
+    "angular-ui-notification": "~0.1.0",
+    "angular-bootstrap": "~0.14.3",
+    "bootstrap": "4",
+    "angular-resource": "~1.4.8",
+    "angular-ui-router": "~0.2.15"
+  }
+}
