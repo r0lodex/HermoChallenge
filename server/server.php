@@ -30,5 +30,5 @@ function render($path, $data=null) {
 }
 
 $app->on('/', function() {
-    $this->end(render('index', []));
+    $this->end(render('home', []));
 });
