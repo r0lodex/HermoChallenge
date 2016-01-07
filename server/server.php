@@ -1,17 +1,11 @@
 <?php
 /*
-
     Author: Irfan Radzi
     Project: Hermo Challenge 2016
     January 2016
-
-    Horus 13     — https://alash3al.github.io/Horus
-    Twig  1.22.4 - http://twig.sensiolabs.org
-
 */
 
-require 'Horus.php';
-require_once 'Twig/Autoloader.php';
+require __DIR__.'/vendor/autoload.php';
 
 Twig_Autoloader::register();
 $app = new Horus();
