@@ -1,20 +1,20 @@
 <?php
 /*
-    Author: Irfan Radzi
-    Project: Hermo Challenge 2016
-    January 2016
+* Author  : Irfan Radzi
+* Project : Hermo Challenge 2016
+* January 2016
 */
 
 require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/vendor/alash3al/horus/Horus.php'; // App not optimized for autoload...
 
 Twig_Autoloader::register();
 $app = new Horus();
 $app->config->base = '/';
 
 function render($path, $data=null) {
-    $loader   = new Twig_Loader_Filesystem('../modules');
+    $loader   = new Twig_Loader_Filesystem('../app');
     $twig     = new Twig_Environment($loader, array('debug'=>true));
-    $ENV      = [];
 
     $twig->addExtension(new Twig_Extension_Debug());
 
@@ -24,5 +24,5 @@ function render($path, $data=null) {
 }
 
 $app->on('/', function() {
-    $this->end(render('home', []));
+    $this->end(render('index', []));
 });
