@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-9">
+        <img ng-src="{{ banner.active }}" width="100%">
+    </div>
+    <div class="col-md-3 hidden-sm-down">
+        <ul class="list-unstyled">
+            <li ng-repeat="banner in banner.banner.items" style="margin-bottom: 2px;">
+                <img ng-if="$index < 4 && $index != 0" ng-src="{{ banner.image }}" width="100%">
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- <div ng-repeat="banner in banner.banner.items">
+    <img ng-if="$index == 0" ng-src="{{ banner.image }}" width="100%">
+</div> -->
