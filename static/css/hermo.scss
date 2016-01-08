@@ -1,0 +1,116 @@
+$hermo-primary: rgb(102, 0, 51);
+
+@import 'components/bootstrap/scss/bootstrap';
+@import 'fonts';
+@import 'icomoon';
+@import 'linearicons';
+@import '../../bower_components/angular-carousel/src/css/angular-carousel';
+
+body {
+    background: lighten(#EEE, 2%);
+    line-height: 1.3;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#banner {
+    border-top: 10px solid lighten($hermo-primary, 10%);
+}
+
+#products {
+    @include media-breakpoint-down(sm) {
+        margin-top: 20px;
+    }
+}
+
+.card-subtitle {
+    margin-top: 1px;
+    padding-top: 5px;
+    border-top: 1px solid rgba($hermo-primary, 0.1);
+    @extend .small;
+    color: rgba($hermo-primary, 0.5);
+    display: block;
+}
+
+.discount {
+    position: absolute;
+    left: -5px; top: -5px;
+    background: #444;
+    color: #FFF;
+    border-radius: 20px;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    box-shadow: 0 2px 2px rgba(#000, 0.1);
+    padding: 5px;
+    > span {
+        position: relative;
+        top: 7px;
+    }
+    @extend .small;
+}
+
+
+$font-size: 1em;
+$line-height: 1.2;
+$lines-to-show: 2;
+
+.multiline-ellipsis {
+    display: block;
+    display: -webkit-box;
+    width: 100%;
+    height: $font-size*$line-height*$lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card {
+    border-radius: 0;
+}
+
+.card-title {
+    @extend .multiline-ellipsis;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    color: lighten($hermo-primary, 20%);
+}
+
+.discounted-price { display: block; }
+.discounted-value {
+    // text-decoration: line-through;
+    @extend .text-muted;
+}
+
+.buy-button {
+    @include media-breakpoint-up(sm) {
+        position: absolute;
+        right: 10px;
+        bottom: 18px;
+    }
+
+    padding: 2px 15px;
+    @include media-breakpoint-down(sm) {
+        margin-top: 10px;
+        text-align: center;
+        padding: 5px 15px;
+    }
+
+    display: block;
+    border: 1px solid;
+    color: lighten($hermo-primary, 30%);
+    @extend .small;
+
+    &:hover {
+        background: lighten($hermo-primary, 30%);
+        color: #FFF;
+    }
+}
