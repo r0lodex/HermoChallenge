@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3" ng-repeat="product in product.items">
+        <div class="card">
+            <div class="discount" ng-if="product.discount_rate">
+                <span><span ng-bind="product.discount_rate"></span>%</span>
+            </div>
+            <div class="card-block">
+                <img class="card-img-top" ng-src="{{ product.images }}" width="100%">
+                <a ng-href="{{ product.brand.url }}" class="card-subtitle" ng-bind="product.brand.name"></a>
+                <a href="#"><h5 class="card-title" ng-bind="product.name"></h5></a>
+                <p class="card-text product-price">
+                    <small class="discounted-price" ng-switch="product.discount_rate">
+                        <span ng-switch-when="0">&nbsp;</span>
+                        <span ng-switch-default class="discounted-value">Save <span ng-bind="product.retail_price - product.selling_price | currency:product.symbol"></span>
+                    </small>
+                    <strong ng-bind="product.selling_price | currency:product.symbol"></strong>
+                    <a href="#" class="buy-button">BUY</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
