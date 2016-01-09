@@ -42,6 +42,59 @@ $lines-to-show: 2;
     margin: 10px 0;
 }
 
+.nowrap {
+    white-space: nowrap
+}
+
+.disabled {
+    color: #CCC;
+    &:hover {
+        color: #CCC;
+        cursor: default;
+    }
+}
+
+.empty {
+    margin: 20px;
+    text-align: center;
+    padding: 80px;
+    color: #CCC;
+    border: 1px dashed #CCC;
+}
+
+// Bootstrap Overrides
+// ===================
+.table {
+    @extend .small;
+    thead th {
+        font-size: 0.9em;
+        border-top: none;
+        border-bottom: 1px solid #CCC;;
+        font-weight: normal;
+        color: #666;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        &:hover { cursor: pointer; color: #444 }
+        > small {
+            @extend .text-muted;
+            position: relative;
+            bottom: 1px;
+        }
+    }
+    .striped-td td{
+        border: 1px solid #CCC;
+    }
+    td { vertical-align: middle; }
+    td.alpha-column { width: 80%; }
+    tr.clickable {
+        &:hover {
+            cursor: pointer;
+            background: lighten($hermo-primary, 45%)
+        }
+    }
+}
+
+
 // ===================
 
 #banner {
@@ -49,7 +102,7 @@ $lines-to-show: 2;
     background: rgba($hermo-primary, 0.1);
     margin-bottom: 20px;
     .slide-thumb {
-        margin-bottom: 4px;
+        margin-bottom: 8px;
         opacity: 0.5;
         border: 1px dotted;
         &.active { opacity: 1; border: 1px solid $hermo-primary; }
@@ -182,5 +235,72 @@ $lines-to-show: 2;
     &:hover {
         cursor: pointer;
         background: lighten($hermo-primary, 20%);
+    }
+}
+
+#carts {
+    max-width: 500px;
+    margin: 0 auto 90px;
+    box-shadow: 0 2px 2px rgba(#000, 0.1);
+    .cart-header {
+        padding: 10px;
+        background: #444;
+        margin-bottom: 0;
+        color: #FFF;
+    }
+    .media {
+        background: #FFF;
+        margin-top: 0;
+        border-top: 1px solid #EEE;
+        padding: 20px 20px 0;
+        position: relative;
+        .media-object {
+            border: 1px solid #EEE;
+            padding: 2px;
+            width: 120px;
+            @include media-breakpoint-down(sm) {
+                width: 80px;
+            }
+        }
+        .media-heading {
+            @extend .multiline-ellipsis;
+            font-weight: bold;
+            // font-size: 0.8em;
+        }
+    }
+    .cart-item-info {
+        margin-top: 10px;
+        label {
+            display: block;
+            font-size: 0.6em;
+            margin-bottom: 0;
+        }
+    }
+    .cart-item-linetotal, .cart-item-remove {
+        position: absolute;
+    }
+
+    .cart-item-remove {
+        right: 10px;
+        top: 10px;
+    }
+    .cart-item-linetotal {
+        text-align: right;
+        label {
+            display: block;
+            margin: 0;
+            @extend .small;
+        }
+        bottom: 15px;
+        right: 20px;
+    }
+
+    .cart-footer {
+        background: #EEE;
+        border-top: 1px solid #DDD;
+        > section {
+            padding: 10px;
+            border-bottom: 1px solid #DDD;
+        }
     }
 }
