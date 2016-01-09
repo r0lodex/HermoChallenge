@@ -4,8 +4,8 @@
     </div>
     <div class="col-md-3 hidden-sm-down">
         <ul class="list-unstyled">
-            <li class="slide-thumb" ng-repeat="slide in banner.banner.items" ng-class="{ active: banner.active == slide.image }">
-                <img ng-click="banner.active = slide.image" ng-if="$index < 3" ng-src="{{ slide.image }}" width="100%">
+            <li class="slide-thumb" ng-repeat="slide in banner.banner.items" ng-class="{ active: banner.active == slide.image }" ng-show="$index < 3">
+                <img ng-click="banner.active = slide.image" ng-src="{{ slide.image }}" width="100%">
             </li>
         </ul>
     </div>
