@@ -37,8 +37,8 @@ $lines-to-show: 2;
     text-overflow: ellipsis;
 }
 .nav-buttons {
-    display: block;
-    margin: 10px 0;
+    display: inline-block;
+    margin: 10px 10px 10px 0;
 }
 .nowrap {
     white-space: nowrap
@@ -273,4 +273,12 @@ $lines-to-show: 2;
             padding: 10px;
         }
     }
+}
+
+.checkout-sums {
+    @extend .small;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #CCC;
+    padding-bottom: 5px;
+    p { margin-bottom: 0 }
 }
