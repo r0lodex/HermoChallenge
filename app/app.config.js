@@ -31,11 +31,18 @@
                 templateUrl: '/app/cart/cart.html',
                 controller: 'cartController',
                 controllerAs: 'cart'
+            },
+            summary: {
+                url: '/checkout',
+                templateUrl: '/app/checkout/checkout.html',
+                controller: 'checkoutController',
+                controllerAs: 'checkout'
             }
         }
 
         $stateProvider.state('home', state.home)
         $stateProvider.state('cart', state.cart)
+        $stateProvider.state('summary', state.summary)
         $urlRouterProvider.otherwise('/shop')
     }
 
