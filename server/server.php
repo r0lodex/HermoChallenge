@@ -30,13 +30,25 @@ $app->on('/', function() {
     $this->end(render('index', []));
 });
 
+$app->on('GET /api/cart', function() {
+    $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+    $this->json($cart);
+});
+
 $app->on('POST /api/cart', function() {
     $cart = new Cart();
     $a = $cart->add($this->body);
     $this->json($a);
 });
 
-$app->on('GET /api/cart', function() {
-    $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+$app->on('PUT /api/cart/:?/:?', function($itemid, $action) {
+    $cart = new Cart();
+    $a = $cart->update($itemid, $action);
+    $this->json($a);
+});
+
+$app->on('DELETE /api/cart/:?', function($itemid) {
+    $cart = new Cart();
+    $a = $cart->delete($itemid);
     $this->json($cart);
 });
