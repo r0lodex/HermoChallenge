@@ -23,6 +23,20 @@ function render($path, $data=null) {
     echo $template->render($data);
 }
 
+session_start();
+include 'cart.php';
+
 $app->on('/', function() {
     $this->end(render('index', []));
+});
+
+$app->on('POST /api/cart', function() {
+    $cart = new Cart();
+    $a = $cart->add($this->body);
+    $this->json($a);
+});
+
+$app->on('GET /api/cart', function() {
+    $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+    $this->json($cart);
 });
