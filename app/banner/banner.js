@@ -10,12 +10,29 @@
         })
     }
 
-    function bannerController($scope, Banner) {
+    function bannerController($scope, Banner, $timeout) {
         var vm = this
         vm.banner = Banner.query(activeRoulette)
+        vm.ind = 0
 
         function activeRoulette(res) {
-            vm.active = res.items[0].image
+            var total = res.items.length
+
+            vm.interval = function() {
+                $timeout(function() {
+                    if (vm.ind < 3) {
+                        vm.active = res.items[vm.ind].image
+                        vm.ind++
+                    } else {
+                        vm.ind = 0
+                    }
+                    vm.interval()
+                }, 3000)
+            }
+
+            vm.active = res.items[vm.ind].image
+
+            vm.interval()
         }
     }
 })()

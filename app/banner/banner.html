@@ -4,12 +4,9 @@
     </div>
     <div class="col-md-3 hidden-sm-down">
         <ul class="list-unstyled">
-            <li ng-repeat="banner in banner.banner.items" style="margin-bottom: 2px;">
-                <img ng-if="$index < 4 && $index != 0" ng-src="{{ banner.image }}" width="100%">
+            <li class="slide-thumb" ng-repeat="slide in banner.banner.items" ng-class="{ active: banner.active == slide.image }">
+                <img ng-click="banner.active = slide.image" ng-if="$index < 3" ng-src="{{ slide.image }}" width="100%">
             </li>
         </ul>
     </div>
 </div>
-<!-- <div ng-repeat="banner in banner.banner.items">
-    <img ng-if="$index == 0" ng-src="{{ banner.image }}" width="100%">
-</div> -->
