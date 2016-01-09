@@ -3,6 +3,7 @@
     angular
         .module('hermo')
         .factory('Cart', cartFactory)
+        .factory('Checkout', checkoutFactory)
         .controller('cartController', cartController);
 
     function cartFactory($resource) {
@@ -13,7 +14,13 @@
         })
     }
 
-    function cartController($scope, Cart) {
+    function checkoutFactory($resource) {
+        return $resource('/api/checkout', {}, {
+            checkout: { method: 'POST', isArray: false }
+        })
+    }
+
+    function cartController($scope, $state, Cart, Checkout) {
         var vm = this
         vm.total = 0
         getCart()
@@ -45,6 +52,18 @@
         vm.qtymod = function(data, add) {
             Cart.updateQty({ itemid: data.id, action: (add) ? 'add':'minus' }, getCart)
         }
+
+        vm.checkout = function() {
+            Checkout.checkout(vm.data, function(res) {
+                console.log(res, vm.data)
+                if (res.error) {
+                    vm.error = res.message;
+                } else {
+                    $state.go('cart.summary')
+                }
+            })
+        }
+
      }
 
 })()
