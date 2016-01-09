@@ -4,7 +4,6 @@
     angular
         .module('hermo', [
             'ui.router',
-            'ngResource',
-            'ngAnimate',
+            'ngResource'
         ])
 })()

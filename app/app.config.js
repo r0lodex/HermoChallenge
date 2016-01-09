@@ -2,7 +2,12 @@
     'use strict';
     angular
         .module('hermo')
-        .config(routesProvider);
+        .config(routesProvider)
+        .run(hermoInit);
+
+    function hermoInit($rootScope, $state) {
+        $rootScope.$state = $state
+    }
 
     function routesProvider($stateProvider, $urlRouterProvider) {
         var views = {
@@ -22,10 +27,17 @@
             home: {
                 url: '/',
                 views: views
+            },
+            cart: {
+                url: '/cart',
+                templateUrl: '/app/cart/cart.html',
+                controller: 'cartController',
+                controllerAs: 'cart'
             }
         }
 
         $stateProvider.state('home', state.home)
+        $stateProvider.state('cart', state.cart)
         $urlRouterProvider.otherwise('/')
     }
 
