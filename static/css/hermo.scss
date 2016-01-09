@@ -17,6 +17,15 @@ a:hover {
 
 #banner {
     border-top: 10px solid lighten($hermo-primary, 10%);
+    padding: 15px 15px 0;
+    background: rgba($hermo-primary, 0.1);
+    margin-bottom: 20px;
+    .slide-thumb {
+        margin-bottom: 4px;
+        opacity: 0.5;
+        &.active { opacity: 1; }
+        &:hover { opacity: 1; cursor: pointer }
+    }
 }
 
 #products {
@@ -73,6 +82,15 @@ $lines-to-show: 2;
 
 .card {
     border-radius: 0;
+    box-shadow: 0 2px 5px rgba(#000, 0.1);
+    &.card-sold-out {
+        // background: #EEE;
+        box-shadow: none;
+        border: 1px solid #FFF;
+        .product-price { color: #666; }
+        .discounted-value { visibility: hidden;}
+        .discount { background: #CCC; }
+    }
 }
 
 .card-title {
@@ -101,7 +119,6 @@ $lines-to-show: 2;
     @include media-breakpoint-down(sm) {
         margin-top: 10px;
         text-align: center;
-        padding: 5px 15px;
     }
 
     display: block;
@@ -113,4 +130,20 @@ $lines-to-show: 2;
         background: lighten($hermo-primary, 30%);
         color: #FFF;
     }
+
+    &.disabled {
+        color: #777;
+        padding: 2px 5px;
+        border: 1px dotted;
+        &:hover {
+            cursor: default;
+            background: none;
+        }
+    }
+}
+
+.section-title {
+    position: relative;
+    top: 8px;
+    color: $hermo-primary
 }
