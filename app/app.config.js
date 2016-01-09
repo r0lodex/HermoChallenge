@@ -12,7 +12,7 @@
     function routesProvider($stateProvider, $urlRouterProvider) {
         var state = {
             home: {
-                url: '/',
+                url: '/shop',
                 views: {
                     banner: {
                         templateUrl: '/app/banner/banner.html',
@@ -36,7 +36,7 @@
 
         $stateProvider.state('home', state.home)
         $stateProvider.state('cart', state.cart)
-        $urlRouterProvider.otherwise('/')
+        $urlRouterProvider.otherwise('/shop')
     }
 
 })()
