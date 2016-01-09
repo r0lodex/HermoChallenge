@@ -7,3 +7,8 @@ Run `bower install` on root, and `php composer phar install` inside *server* dir
 
 ### TODO
 - Add loading indicator
+
+Made with
+- Horus php
+- AngularJS
+- SASS (with the help of Codekit)
