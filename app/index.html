@@ -15,7 +15,7 @@
     <script src="/app/products/products.js"></script>
     <script src="/app/cart/cart.js"></script>
 </head>
-<body>
+<body ui-view>
     <section id="banner" ui-view="banner"></section>
     <div class="container" ng-controller="cartController as cart">
         <section id="products" ui-view="products"></section>

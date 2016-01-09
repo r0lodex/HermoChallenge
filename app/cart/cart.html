@@ -1,1 +1,8 @@
-testing
+<div class="container">
+    <a ui-sref="home" class="small nav-buttons"><span class="lnr lnr-arrow-left"></span> Back to shopping</a>
+    <section id="cartItems">
+        <h6><span class="lnr lnr-cart"></span> You have <span ng-bind="cart.items.length"></span> product<span ng-if="cart.items.length > 1">s</span> in your cart.</h6>
+        <hr>
+
+    </section>
+</div>

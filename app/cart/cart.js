@@ -18,7 +18,6 @@
 
         function getCart() {
             Cart.query(function(res) {
-                console.log(res)
                 if (res.length) {
                     vm.items = res
                     var a = 0

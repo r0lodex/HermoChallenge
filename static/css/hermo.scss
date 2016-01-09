@@ -9,6 +9,7 @@ $hermo-primary: rgb(102, 0, 51);
 body {
     background: lighten(#EEE, 2%);
     line-height: 1.3;
+    border-top: 10px solid lighten($hermo-primary, 10%);
 }
 
 a:hover {
@@ -36,10 +37,14 @@ $lines-to-show: 2;
     text-overflow: ellipsis;
 }
 
+.nav-buttons {
+    display: block;
+    margin: 10px 0;
+}
+
 // ===================
 
 #banner {
-    border-top: 10px solid lighten($hermo-primary, 10%);
     padding: 15px 15px 5px;
     background: rgba($hermo-primary, 0.1);
     margin-bottom: 20px;
@@ -55,7 +60,7 @@ $lines-to-show: 2;
         // border-bottom: 3px solid lighten($hermo-primary, 10%);
     }
     &:empty {
-        display: none;
+        // display: none;
     }
 }
 
@@ -111,6 +116,9 @@ $lines-to-show: 2;
         @extend .small;
         color: rgba($hermo-primary, 0.5);
         display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .card-title {
