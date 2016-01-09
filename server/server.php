@@ -25,6 +25,7 @@ function render($path, $data=null) {
 
 session_start();
 include 'cart.php';
+include 'checkout.php';
 
 $app->on('/', function() {
     $this->end(render('index', []));
