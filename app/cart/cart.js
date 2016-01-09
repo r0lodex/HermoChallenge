@@ -6,8 +6,10 @@
         .controller('cartController', cartController);
 
     function cartFactory($resource) {
-        return $resource('/api/cart', {}, {
-            addToCart: { method: 'POST', isArray: true }
+        return $resource('/api/cart/:itemid/:action', { itemid: '@itemid', action: '@action' }, {
+            addToCart: { method: 'POST', isArray: true },
+            removeItem: { method: 'DELETE', isArray: false },
+            updateQty: { method: 'PUT', isArray: false }
         })
     }
 
@@ -15,6 +17,10 @@
         var vm = this
         vm.total = 0
         getCart()
+
+        $scope.$on('cart:add', function(e,data) {
+            Cart.addToCart(data, getCart)
+        })
 
         function getCart() {
             Cart.query(function(res) {
@@ -29,9 +35,16 @@
             })
         }
 
-        $scope.$on('cart:add', function(e,data) {
-            Cart.addToCart(data, getCart)
-        })
-    }
+        vm.removeItem = function(data) {
+            var a = confirm('Confirm removal of ' + data.name + '?')
+            if (a) {
+                Cart.removeItem({ itemid: data.id }, getCart)
+            }
+        }
+
+        vm.qtymod = function(data, add) {
+            Cart.updateQty({ itemid: data.id, action: (add) ? 'add':'minus' }, getCart)
+        }
+     }
 
 })()
