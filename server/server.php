@@ -58,6 +58,12 @@ $app->on('DELETE /api/cart/:?', function($productid) {
 
 // CHECKOUT API
 // ================
+$app->on('GET /api/checkout', function() {
+    $checkout = new Checkout();
+    $a = $checkout->summary();
+    $this->json($a);
+});
+
 $app->on('POST /api/checkout', function() {
     $checkout = new Checkout();
     $a = $checkout->validate($this->body);

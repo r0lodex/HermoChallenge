@@ -7,11 +7,11 @@ class Checkout {
     public function validate($data) {
         $response = [
             'grand_total'   => 0,
-            'shipping_fee'  => 0
+            'shipping_fee'  => 0,
+            'promo_code'    => null
         ];
 
         $total = 0;
-        // Calculate Grand Total
         foreach ($_SESSION['cart'] as $k => $v) {
             $total = $total + $v['linetotal'];
         }
@@ -43,11 +43,21 @@ class Checkout {
             }
         }
 
-        // Finally calculate Grand Total
-        // Promo should return -value
         $response['grand_total'] = $total + $fee;
         $response['shipping_fee'] = $fee;
+        $response['shipping_country'] = $data['shipping_country'];
+        $response['promo_code'] = $promo_code;
 
+        $_SESSION['checkout'] = $response;
+
+        return $response;
+    }
+
+    public function summary() {
+        $response = [
+            'items' => $_SESSION['cart'],
+            'total' => $_SESSION['checkout']
+        ];
         return $response;
     }
 }
