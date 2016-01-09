@@ -36,16 +36,13 @@ $lines-to-show: 2;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .nav-buttons {
     display: block;
     margin: 10px 0;
 }
-
 .nowrap {
     white-space: nowrap
 }
-
 .disabled {
     color: #CCC;
     &:hover {
@@ -53,7 +50,6 @@ $lines-to-show: 2;
         cursor: default;
     }
 }
-
 .empty {
     margin: 20px;
     text-align: center;
@@ -61,39 +57,6 @@ $lines-to-show: 2;
     color: #CCC;
     border: 1px dashed #CCC;
 }
-
-// Bootstrap Overrides
-// ===================
-.table {
-    @extend .small;
-    thead th {
-        font-size: 0.9em;
-        border-top: none;
-        border-bottom: 1px solid #CCC;;
-        font-weight: normal;
-        color: #666;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        &:hover { cursor: pointer; color: #444 }
-        > small {
-            @extend .text-muted;
-            position: relative;
-            bottom: 1px;
-        }
-    }
-    .striped-td td{
-        border: 1px solid #CCC;
-    }
-    td { vertical-align: middle; }
-    td.alpha-column { width: 80%; }
-    tr.clickable {
-        &:hover {
-            cursor: pointer;
-            background: lighten($hermo-primary, 45%)
-        }
-    }
-}
-
 
 // ===================
 
@@ -116,13 +79,11 @@ $lines-to-show: 2;
         // display: none;
     }
 }
-
 .section-title {
     position: relative;
     top: 8px;
     color: lighten($hermo-primary, 10%)
 }
-
 // Product Cards
 // ===================
 #products {
@@ -131,7 +92,6 @@ $lines-to-show: 2;
         margin-top: 20px;
     }
 }
-
 .card {
     border-radius: 0;
     box-shadow: 0 2px 5px rgba(#000, 0.1);
@@ -143,7 +103,6 @@ $lines-to-show: 2;
         .discounted-value { visibility: hidden;}
         .discount { background: #CCC; }
     }
-
     .discount {
         position: absolute;
         left: -5px; top: -5px;
@@ -161,7 +120,6 @@ $lines-to-show: 2;
         }
         @extend .small;
     }
-
     .card-subtitle {
         margin-top: 1px;
         padding-top: 5px;
@@ -173,42 +131,35 @@ $lines-to-show: 2;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
     .card-title {
         @extend .multiline-ellipsis;
         margin-bottom: 5px;
     }
-
     .product-price { color: lighten($hermo-primary, 20%); }
     .discounted-price { display: block; }
     .discounted-value {
         // text-decoration: line-through;
         @extend .text-muted;
     }
-
     .buy-button {
         @include media-breakpoint-up(sm) {
             position: absolute;
             right: 10px;
             bottom: 18px;
         }
-
         padding: 2px 15px;
         @include media-breakpoint-down(sm) {
             margin-top: 10px;
             text-align: center;
         }
-
         display: block;
         border: 1px solid;
         color: lighten($hermo-primary, 30%);
         @extend .small;
-
         &:hover {
             background: lighten($hermo-primary, 30%);
             color: #FFF;
         }
-
         &.disabled {
             color: #777;
             padding: 2px 5px;
@@ -279,7 +230,6 @@ $lines-to-show: 2;
     .cart-item-linetotal, .cart-item-remove {
         position: absolute;
     }
-
     .cart-item-remove {
         right: 10px;
         top: 10px;
@@ -297,10 +247,30 @@ $lines-to-show: 2;
 
     .cart-footer {
         background: #EEE;
-        border-top: 1px solid #DDD;
+        border: 1px solid #DDD;
+        border-top: none;
         > section {
+            h5 { margin: 0; }
             padding: 10px;
             border-bottom: 1px solid #DDD;
+            input, select {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            fieldset { margin-bottom: 0; }
+            .form-control {
+                padding: 6px 12px;
+            }
+            label {
+                margin-bottom: 5px;
+                @extend .text-muted;
+                @extend .small;
+            }
+        }
+        .cart-total {
+            background: $hermo-primary;
+            color: #FFF;
+            padding: 10px;
         }
     }
 }

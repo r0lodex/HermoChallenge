@@ -35,26 +35,27 @@
             </div>
         </div>
         <div class="cart-footer">
-            <section class="cart-total">
-                Total <span ng-bind="cart.total | currency:'RM'"></span>
+            <section class="cart-total text-xs-center">
+                <h5>Total: <span ng-bind="cart.total | currency:'RM'"></span></h5>
             </section>
             <section class="cart-promo-input">
                 <div class="row">
-                    <div class="col-md-6">
-                        <input class="text-xs-center" placeholder="Promo Code" style="width: 100%">
-                    </div>
-                    <div class="col-md-6">
-                        <select style="width: 100%">
-                            <option selected disabled>Shipping Option</option>
-                            <option>Malaysia</option>
-                            <option>Singapore</option>
-                            <option>Brunei</option>
+                    <fieldset class="form-group col-md-6">
+                        <label>Promo Code (Optional)</label>
+                        <input class="form-control form-control-sm" placeholder="Promotional Code" ng-model="cart.data.promo_code">
+                    </fieldset>
+                    <fieldset class="form-group col-md-6">
+                        <label>Shipping Country</label>
+                        <select class="c-select form-control-sm" ng-model="cart.data.shipping_country" ng-init="cart.data.shipping_country = '1'">
+                            <option value="1">Malaysia</option>
+                            <option value="2">Singapore</option>
+                            <option value="3">Brunei</option>
                         </select>
-                    </div>
+                    </fieldset>
                 </div>
             </section>
-            <section class="cart-action">
-                <a href="">Checkout</a>
+            <section class="cart-action text-xs-center">
+                <a ng-click="cart.checkout()" class="btn btn-primary btn-sm">Checkout <span class="lnr lnr-arrow-right"></span></a>
             </section>
         </div>
     </section>
