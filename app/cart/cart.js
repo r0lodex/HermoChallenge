@@ -3,7 +3,6 @@
     angular
         .module('hermo')
         .factory('Cart', cartFactory)
-        .factory('Checkout', checkoutFactory)
         .controller('cartController', cartController);
 
     function cartFactory($resource) {
@@ -11,12 +10,6 @@
             addToCart: { method: 'POST', isArray: true },
             removeItem: { method: 'DELETE', isArray: false },
             updateQty: { method: 'PUT', isArray: false }
-        })
-    }
-
-    function checkoutFactory($resource) {
-        return $resource('/api/checkout', {}, {
-            checkout: { method: 'POST', isArray: false }
         })
     }
 
@@ -59,7 +52,7 @@
                 if (res.error) {
                     vm.error = res.message;
                 } else {
-                    $state.go('cart.summary')
+                    $state.go('summary')
                 }
             })
         }

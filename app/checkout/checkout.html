@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="text-xs-center">
+        <a ui-sref="cart" class="small nav-buttons"><span class="lnr lnr-arrow-left"></span> Back to Carts</a>
+        <a ui-sref="home" class="small nav-buttons">Continue Shopping</a>
+    </div>
+    <hr>
+    <section id="carts">
+        <h6 class="text-xs-center">Checkout Summary</h6>
+        <div class="media" ng-repeat="pr in checkout.data.items">
+            <div class="media-left">
+                <img class="media-object" ng-src="{{ pr.images }}">
+            </div>
+            <div class="media-body">
+                <a href="" title="{{ pr.name }}"><small class="media-heading" ng-bind="pr.name"></small></a>
+                <ul class="list-inline cart-item-info">
+                    <li class="list-inline-item small hidden-xs-down">
+                        <label class="text-muted">Retail Price</label>
+                        <span ng-bind="pr.retail_price | currency:pr.symbol"></span>
+                    </li>
+                    <li class="list-inline-item small hidden-xs-down" ng-if="pr.discount_rate">
+                        <label class="text-muted">Discount</label>
+                        <span ng-bind="pr.discount_rate"></span>%
+                    </li>
+                    <li class="list-inline-item small text-xs-center">
+                        <label class="text-muted">Qty</label>
+                        <span ng-bind="pr.qty"></span>
+                    </li>
+                </ul>
+                <div class="cart-item-linetotal">
+                    <label class="text-muted">Subtotal</label>
+                    <strong ng-bind="pr.linetotal | currency:pr.symbol"></strong>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer checkout-footer">
+            <section class="text-xs-right">
+                <div class="checkout-sums">
+                    <p><span class="text-muted">Total</span> <span ng-bind="checkout.total | currency:'RM'"></span></p>
+                    <p><span class="text-muted">Shipping Fees to
+                        <span ng-switch="checkout.data.total.shipping_country">
+                            <span ng-switch-when="1">Malaysia</span>
+                            <span ng-switch-when="2">Singapore</span>
+                            <span ng-switch-when="3">Brunei</span>
+                        </span></span> <span ng-bind="checkout.data.total.shipping_fee | currency:'RM'"></span></p>
+                    <p ng-if="checkout.data.total.promo_code">
+                        <span class="text-muted">Discount (<span ng-bind="checkout.data.total.promo_code"></span>)</span>
+                        <span ng-switch="checkout.data.total.promo_code">
+                            <span ng-switch-when="OFF5PC">-5%</span>
+                            <span ng-switch-when="GIVEME15">-RM15.00</span>
+                        </span>
+                    </p>
+                </div>
+                <h5>Total Payable <span class="text-success" ng-bind="checkout.data.total.grand_total | currency:'RM'"></span></h5>
+            </section>
+        </div>
+    </section>
+</div>
