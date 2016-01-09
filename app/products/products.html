@@ -3,34 +3,34 @@
         <h4 class="section-title text-uppercase">Best Selling Products</h4>
     </div>
     <div class="col-sm-6 text-sm-right text-xs-center">
-        <select class="c-select form-control-sm" style="margin-top: 5px;">
-            <option>Cheapest</option>
-            <option>Most Expensive</option>
-            <option>Highest Discount</option>
-            <option>Lowest Discount</option>
-            <option>Product Name A-Z</option>
-            <option>Product Name Z-A</option>
+        <select class="c-select form-control-sm" style="margin-top: 5px;" ng-model="product.orderBy" ng-init="product.orderBy = '-discount_rate'">
+            <option value="selling_price">Cheapest</option>
+            <option value="-selling_price">Most Expensive</option>
+            <option value="-discount_rate">Highest Discount</option>
+            <option value="discount_rate">Lowest Discount</option>
+            <option value="name">Product Name A-Z</option>
+            <option value="-name">Product Name Z-A</option>
         </select>
     </div>
 </div>
 <hr>
 <div class="row">
-    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3" ng-repeat="product in product.items | filter: query">
-        <div class="card" ng-class="{'card-sold-out': !product.in_stock}">
-            <div class="discount" ng-if="product.discount_rate">
-                <span><span ng-bind="product.discount_rate"></span>%</span>
+    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3" ng-repeat="pr in product.items | orderBy: product.orderBy">
+        <div class="card" ng-class="{'card-sold-out': !pr.in_stock}">
+            <div class="discount" ng-if="pr.discount_rate">
+                <span><span ng-bind="pr.discount_rate"></span>%</span>
             </div>
             <div class="card-block">
-                <img class="card-img-top" ng-src="{{ product.images }}" width="100%">
-                <a ng-href="{{ product.brand.url }}" class="card-subtitle" ng-bind="product.brand.name"></a>
-                <a href="#" title="{{ product.name }}"><h5 class="card-title" ng-bind="product.name"></h5></a>
+                <img class="card-img-top" ng-src="{{ pr.images }}" width="100%">
+                <a ng-href="{{ pr.brand.url }}" class="card-subtitle" ng-bind="pr.brand.name"></a>
+                <a href="#" title="{{ pr.name }}"><h5 class="card-title" ng-bind="pr.name"></h5></a>
                 <p class="card-text product-price">
-                    <small class="discounted-price" ng-switch="product.discount_rate">
+                    <small class="discounted-price" ng-switch="pr.discount_rate">
                         <span ng-switch-when="0">&nbsp;</span>
-                        <span ng-switch-default class="discounted-value">Save <span ng-bind="product.retail_price - product.selling_price | currency:product.symbol"></span>
+                        <span ng-switch-default class="discounted-value">Save <span ng-bind="pr.retail_price - pr.selling_price | currency:pr.symbol"></span>
                     </small>
-                    <strong ng-bind="product.selling_price | currency:product.symbol"></strong>
-                    <span ng-switch="product.in_stock">
+                    <strong ng-bind="pr.selling_price | currency:pr.symbol"></strong>
+                    <span ng-switch="pr.in_stock">
                         <a href="#" ng-switch-when="true" class="buy-button">BUY</a>
                         <span ng-switch-when="false" class="buy-button disabled">SOLD OUT</span>
                     </span>
