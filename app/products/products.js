@@ -14,7 +14,10 @@
         var vm = this
         Product.query(function(res) {
             vm.items = res.items
-            console.log(res.items[0])
         })
+
+        vm.addToCart = function(object) {
+            $scope.$emit('cart:add', object)
+        }
     }
 })()

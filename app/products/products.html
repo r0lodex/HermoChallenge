@@ -31,7 +31,7 @@
                     </small>
                     <strong ng-bind="pr.selling_price | currency:pr.symbol"></strong>
                     <span ng-switch="pr.in_stock">
-                        <a href="#" ng-switch-when="true" class="buy-button">BUY</a>
+                        <a ng-click="product.addToCart(pr)" ng-switch-when="true" class="buy-button">BUY</a>
                         <span ng-switch-when="false" class="buy-button disabled">SOLD OUT</span>
                     </span>
                 </p>
