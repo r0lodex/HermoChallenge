@@ -31,6 +31,8 @@ $app->on('/', function() {
     $this->end(render('index', []));
 });
 
+// CARTS API
+// ================
 $app->on('GET /api/cart', function() {
     $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
     $this->json($cart);
@@ -42,14 +44,22 @@ $app->on('POST /api/cart', function() {
     $this->json($a);
 });
 
-$app->on('PUT /api/cart/:?/:?', function($itemid, $action) {
+$app->on('PUT /api/cart/:?/:?', function($productid, $action) {
     $cart = new Cart();
-    $a = $cart->update($itemid, $action);
+    $a = $cart->update($productid, $action);
     $this->json($a);
 });
 
-$app->on('DELETE /api/cart/:?', function($itemid) {
+$app->on('DELETE /api/cart/:?', function($productid) {
     $cart = new Cart();
-    $a = $cart->delete($itemid);
-    $this->json($cart);
+    $a = $cart->delete($productid);
+    $this->json($a);
+});
+
+// CHECKOUT API
+// ================
+$app->on('POST /api/checkout', function() {
+    $checkout = new Checkout();
+    $a = $checkout->validate($this->body);
+    $this->json($a);
 });
