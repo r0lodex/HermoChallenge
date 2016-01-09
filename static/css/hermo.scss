@@ -15,6 +15,28 @@ a:hover {
     text-decoration: none;
 }
 
+// Utilities
+// ==============
+$font-size: 1em;
+$line-height: 1.2;
+$lines-to-show: 2;
+
+.multiline-ellipsis {
+    display: block;
+    display: -webkit-box;
+    width: 100%;
+    height: $font-size*$line-height*$lines-to-show;
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// ==
+
 #banner {
     border-top: 10px solid lighten($hermo-primary, 10%);
     padding: 15px 15px 0;
@@ -34,50 +56,10 @@ a:hover {
     }
 }
 
-.card-subtitle {
-    margin-top: 1px;
-    padding-top: 5px;
-    border-top: 1px solid rgba($hermo-primary, 0.1);
-    @extend .small;
-    color: rgba($hermo-primary, 0.5);
-    display: block;
-}
-
-.discount {
-    position: absolute;
-    left: -5px; top: -5px;
-    background: #444;
-    color: #FFF;
-    border-radius: 20px;
-    width: 42px;
-    height: 42px;
-    text-align: center;
-    box-shadow: 0 2px 2px rgba(#000, 0.1);
-    padding: 5px;
-    > span {
-        position: relative;
-        top: 7px;
-    }
-    @extend .small;
-}
-
-
-$font-size: 1em;
-$line-height: 1.2;
-$lines-to-show: 2;
-
-.multiline-ellipsis {
-    display: block;
-    display: -webkit-box;
-    width: 100%;
-    height: $font-size*$line-height*$lines-to-show;
-    margin: 0 auto;
-    font-size: $font-size;
-    line-height: $line-height;
-    -webkit-line-clamp: $lines-to-show;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.section-title {
+    position: relative;
+    top: 8px;
+    color: $hermo-primary
 }
 
 .card {
@@ -91,59 +73,77 @@ $lines-to-show: 2;
         .discounted-value { visibility: hidden;}
         .discount { background: #CCC; }
     }
-}
 
-.card-title {
-    @extend .multiline-ellipsis;
-    margin-bottom: 5px;
-}
-
-.product-price {
-    color: lighten($hermo-primary, 20%);
-}
-
-.discounted-price { display: block; }
-.discounted-value {
-    // text-decoration: line-through;
-    @extend .text-muted;
-}
-
-.buy-button {
-    @include media-breakpoint-up(sm) {
+    .discount {
         position: absolute;
-        right: 10px;
-        bottom: 18px;
-    }
-
-    padding: 2px 15px;
-    @include media-breakpoint-down(sm) {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    display: block;
-    border: 1px solid;
-    color: lighten($hermo-primary, 30%);
-    @extend .small;
-
-    &:hover {
-        background: lighten($hermo-primary, 30%);
+        left: -5px; top: -5px;
+        background: #444;
         color: #FFF;
+        border-radius: 20px;
+        width: 42px;
+        height: 42px;
+        text-align: center;
+        box-shadow: 0 2px 2px rgba(#000, 0.1);
+        padding: 5px;
+        > span {
+            position: relative;
+            top: 7px;
+        }
+        @extend .small;
     }
 
-    &.disabled {
-        color: #777;
-        padding: 2px 5px;
-        border: 1px dotted;
+    .card-subtitle {
+        margin-top: 1px;
+        padding-top: 5px;
+        border-top: 1px solid rgba($hermo-primary, 0.1);
+        @extend .small;
+        color: rgba($hermo-primary, 0.5);
+        display: block;
+    }
+
+    .card-title {
+        @extend .multiline-ellipsis;
+        margin-bottom: 5px;
+    }
+
+    .product-price { color: lighten($hermo-primary, 20%); }
+    .discounted-price { display: block; }
+    .discounted-value {
+        // text-decoration: line-through;
+        @extend .text-muted;
+    }
+
+    .buy-button {
+        @include media-breakpoint-up(sm) {
+            position: absolute;
+            right: 10px;
+            bottom: 18px;
+        }
+
+        padding: 2px 15px;
+        @include media-breakpoint-down(sm) {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        display: block;
+        border: 1px solid;
+        color: lighten($hermo-primary, 30%);
+        @extend .small;
+
         &:hover {
-            cursor: default;
-            background: none;
+            background: lighten($hermo-primary, 30%);
+            color: #FFF;
+        }
+
+        &.disabled {
+            color: #777;
+            padding: 2px 5px;
+            border: 1px dotted;
+            &:hover {
+                cursor: default;
+                background: none;
+            }
         }
     }
-}
-
-.section-title {
-    position: relative;
-    top: 8px;
-    color: $hermo-primary
 }
