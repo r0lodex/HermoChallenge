@@ -45,14 +45,15 @@ class Promo {
 
     public function promo1($items) {
         $value = 0;
+        $totalQty = 0;
         $satisfied = false;
         foreach ($items as $k => $v) {
             $value = $value + $v['linetotal'];
-            // Promo condition check
-            if ($v['qty'] >= 2) {
-                $satisfied = true;
-            }
+            $totalQty += $v['qty'];
         }
+        // Promo condition check
+        $satisfied = $totalQty >= 2;
+        
         if ($satisfied) {
             $value = round($value * ((100-5) / 100),2);
         } else {
